@@ -1,5 +1,4 @@
-# assignment
-# To use fist clone repo into your local system.
+## To use first clone repo into your local system.
 
 ```
 activate venv
@@ -10,4 +9,5 @@ install requiments with pip
 ```
 for dashbord :
   > username : admin
+  
   > password admin
