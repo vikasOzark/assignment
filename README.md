@@ -10,4 +10,4 @@ install requiments with pip
 for dashbord :
   > username : admin
   
-  > password admin
+  > password : admin
