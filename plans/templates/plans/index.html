@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.15.10/dist/css/uikit.min.css" />
+
+</head>
+<body style="height: 100vh; background-color: rgba(233, 233, 233, 0.438);">
+    <nav class="uk-navbar-container uk-margin" uk-navbar>
+        <div class="uk-navbar-left container ">
+    
+            <a class="uk-navbar-item uk-logo" href="#">Logo</a>
+    
+            <ul class="uk-navbar-nav">
+                <li>
+                    <a href="{% url 'plans-load' %}" >
+                        <p class="m-0 border bg-primary text-light fw-bold p-2 rounded bg-opacity-50 shadow-sm">
+                            <span class="uk-icon uk-margin-small-right" uk-icon="icon: refresh"></span>
+                            Load Plans
+                        </p>
+                    </a>
+                </li>
+            </ul>
+    
+    
+            <div class="uk-navbar-item">
+                <form action="javascript:void(0)">
+                    <input class="uk-input uk-form-width-small" type="text" placeholder="Input">
+                    <button class="uk-button uk-button-default">Button</button>
+                </form>
+            </div>
+    
+        </div>
+    </nav>
+   <div class="container">
+    <div class="row mt-5">
+        {% for plan in plans %}
+        <div class="col-md-4 p-2">
+            <div class="flex max-w-md overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
+                <div class="w-1/3 bg-cover" style="background-image: url('https://png.pngitem.com/pimgs/s/79-796595_36-53k-airtel-my-airtel-icon-png-transparent.png')"></div>
+            
+                <div class="w-2/3 p-4 md:p-4">
+                    <h1 class="text-2xl font-bold text-gray-800 dark:text-white">{{ plan.plan_name }}</h1>
+            
+                    <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">SMS per day : {{ plan.sms_per_day }}</p>
+            
+                    {% if plan.amazon_prime %}
+                        <div class="flex w-1/3 bg-cover">
+                            <img src="https://download.logo.wine/logo/Prime_Video/Prime_Video-Logo.wine.png" alt="">
+                        </div>
+                    {% else %}
+                        <div class="">
+                            Prime not available
+                        </div>
+                    {% endif %}
+            
+                    <div class="flex justify-between item-center">
+                        <h1 class="text-lg font-bold text-gray-700 dark:text-gray-200 md:text-xl">&#x20B9; {{ plan.price }}</h1>
+                        <button class="px-2 py-1 text-xs font-bold text-white uppercase transition-colors duration-300 transform bg-gray-800 rounded dark:bg-gray-700 hover:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600">DATA : {{plan.data_rollover}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+   </div>
+<!-- UIkit JS -->
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.15.10/dist/js/uikit.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.15.10/dist/js/uikit-icons.min.js"></script>
+   <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</body>
+</html>
